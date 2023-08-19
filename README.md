@@ -1,0 +1,1 @@
+### Initiall project structure for django
