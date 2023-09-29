@@ -4,12 +4,18 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Set migrations file for this structure purpose
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
+
 env
 venv
 .env
 
 local_settings.py
 db.sqlite3
+
 
 src/*/__pycache__/
 src/*/*/__pycache__/
