@@ -5,7 +5,7 @@ from core.models import User
 from core.validationsMixin import UserCommonValidationMixin
 
 
-class UserSerializers(UserCommonValidationMixin, serializers.ModelSerializer):
+class UserDetailSerializer(UserCommonValidationMixin, serializers.ModelSerializer):
     confirm_password = serializers.CharField(write_only=True)
 
     class Meta:
@@ -32,8 +32,3 @@ class UserSerializers(UserCommonValidationMixin, serializers.ModelSerializer):
         ]
         read_only_fields = ["uid", "slug", "status", "created_at", "updated_at"]
 
-    def create(self, validated_data):
-        """Pop the confirm password fields during create an user."""
-
-        validated_data.pop("confirm_password", None)
-        return super().create(validated_data)
