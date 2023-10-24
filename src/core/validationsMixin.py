@@ -5,7 +5,7 @@ from rest_framework.serializers import ValidationError
 
 class UserCommonValidationMixin:
     def validate_date_of_birth(self, value):
-        if value > timezone.now().date():
+        if value and value > timezone.now().date():
             raise ValidationError("Date of birth cannot be in the future.")
         return value
 
