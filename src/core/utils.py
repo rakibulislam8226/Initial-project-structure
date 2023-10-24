@@ -9,7 +9,7 @@ def get_user_slug(instance):
 
 # Media File Prefixes
 def get_user_media_path_prefix(instance, filename):
-    return f"users/{instance.slug}/{filename}"
+    return f"Media/users/{instance.slug}/{filename}"
 
 
 # Generate Token Manually

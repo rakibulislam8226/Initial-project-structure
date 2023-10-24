@@ -16,7 +16,7 @@ from .utils import get_user_slug, get_user_media_path_prefix
 class User(AbstractUser, BaseModelWithUID, PermissionsMixin):
     phone = PhoneNumberField(unique=True, db_index=True, verbose_name="Phone Number")
     slug = AutoSlugField(populate_from=get_user_slug, unique=True)
-    nid = models.CharField(max_length=20, blank=True)
+    nid = models.CharField(max_length=20, unique=True, blank=True)
     image = VersatileImageField(
         "Image",
         upload_to=get_user_media_path_prefix,
