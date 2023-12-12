@@ -1,7 +1,7 @@
 from django.urls import path
 
-from ..views.auth import PatientAuthView
+from ..views.auth import PublicUserAuthView
 
 urlpatterns = [
-    path("", PatientAuthView.as_view(), name="core.auth"),
+    path("", PublicUserAuthView.as_view(), name="core.user-auth"),
 ]

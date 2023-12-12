@@ -1,7 +1,8 @@
 from django.contrib import admin
-from axes.admin import AccessLog
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+
+from axes.admin import AccessLog
 
 from .models import User
 
@@ -12,12 +13,9 @@ class UserAdmin(UserAdmin):
     form = UserChangeForm
     model = User
     list_display = [
-        "uid",
         "phone",
-        "first_name",
-        "last_name",
         "email",
-        "slug",
+        "type",
     ]
     list_filter = UserAdmin.list_filter + ("status",)
     readonly_fields = ("slug",)

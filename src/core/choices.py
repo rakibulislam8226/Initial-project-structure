@@ -24,8 +24,8 @@ class UserStatus(models.TextChoices):
 
 class UserType(models.TextChoices):
     UNKNOWN = "UNKNOWN", "Unknown"
-    PATIENT = "PATIENT", "Patient"
-    DOCTOR = "DOCTOR", "Doctor"
+    TEACHER = "TEACHER", "Teacher"
+    STUDENT = "STUDENT", "Student"
     STAFF = "STAFF", "Staff"
 
 
