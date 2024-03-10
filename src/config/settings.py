@@ -22,6 +22,13 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+STATIC_DIR = os.path.realpath(os.path.join(BASE_DIR, "staticfiles"))
+# The directory where different applications uploads media files to
+# This can/should be located at ~/media, preferrably outside the git repo
+MEDIA_DIR = os.path.realpath(os.path.join(BASE_DIR, "media"))
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -35,9 +42,10 @@ SECRET_KEY = str(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", False)
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(" ")
+print(ALLOWED_HOSTS)
 
 
 # Application definition
@@ -58,6 +66,7 @@ THIRD_PARTY_APPS = [
     "simple_history",
     "axes",
     "drf_spectacular",
+    "versatileimagefield",
 ]
 
 PROJECT_APPS = [
@@ -147,7 +156,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = os.getenv("TIME_ZONE", "UTC")
+TIME_ZONE = os.getenv("TIME_ZONE", "Asia/Dhaka")
 
 USE_I18N = True
 
@@ -157,8 +166,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = STATIC_DIR
+STATIC_URL = "/static/"
+
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = "/media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
